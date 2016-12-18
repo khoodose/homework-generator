@@ -38,7 +38,7 @@ $(function(){
   function generateMixedOperation() {
     var M1 = Math.floor(Math.random()*maximumValue + 1);
     var M2 = Math.floor(Math.random()*(maximumValue-M1) + 1);
-    var M3 = Math.floor(Math.random()*(maximumValue-M1-M2) + 1);
+    var M3 = Math.floor(Math.random()*(M1+M2) + 1);
     var mixedAnswer = M1 + M2 - M3;
 
     $("#M1").html(M1);
@@ -50,15 +50,15 @@ $(function(){
 
   // Event handling
   $("#generateAdditionButton").click(function(){
-    generateAddition()
+    generateAddition();
   });
 
   $("#generateSubtractionButton").click(function(){
-    generateSubtraction()
+    generateSubtraction();
   });
 
   $("#generateMixedButton").click(function(){
-    generateMixedOperation()
+    generateMixedOperation();
   });
 
 });
