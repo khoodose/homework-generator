@@ -8,8 +8,8 @@ $(function(){
 
   // populate the fields on page load
   generateAddition();
-
   generateSubtraction();
+  generateMixedOperation();
 
   function generateAddition() {
     var additionAnswer = Math.floor(Math.random()*maximumValue + 1);
@@ -35,12 +35,30 @@ $(function(){
     $("#answer_subtraction").html(subtractionAnswer);
   }
 
+  function generateMixedOperation() {
+    var M1 = Math.floor(Math.random()*maximumValue + 1);
+    var M2 = Math.floor(Math.random()*(maximumValue-M1) + 1);
+    var M3 = Math.floor(Math.random()*(maximumValue-M1-M2) + 1);
+    var mixedAnswer = M1 + M2 - M3;
+
+    $("#M1").html(M1);
+    $("#M2").html(M2);
+    $("#M3").html(M3);
+    $("#answer_mixed").html(mixedAnswer);
+
+  }
+
+  // Event handling
   $("#generateAdditionButton").click(function(){
     generateAddition()
   });
 
   $("#generateSubtractionButton").click(function(){
     generateSubtraction()
+  });
+
+  $("#generateMixedButton").click(function(){
+    generateMixedOperation()
   });
 
 });
