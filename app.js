@@ -5,11 +5,15 @@ $(function(){
 
   // settings for generator
   var maximumValue = 18;
+  var maximumValueWordProblem = 99;
 
   // populate the fields on page load
   generateAddition();
   generateSubtraction();
   generateMixedOperation();
+  generateAdditionWord();
+  generateSubtractionWord();
+
 
   function generateAddition() {
     var additionAnswer = Math.floor(Math.random()*maximumValue + 1);
@@ -23,6 +27,18 @@ $(function(){
     $("#answer_addition").html(additionAnswer);
   }
 
+  function generateAdditionWord() {
+    var additionAnswerWord = Math.floor(Math.random()*maximumValueWordProblem + 1);
+    var AW1 = Math.floor(Math.random()*additionAnswerWord + 1);
+    var AW2 = additionAnswerWord - AW1;
+
+    console.log("Addition Answer = " + additionAnswerWord + '\n' + "AW1 = " + AW1 + '\n' + "AW2 = " + AW2);
+
+    $("#AW1").html(AW1);
+    $("#AW2").html(AW2);
+    $("#answer_addition_word").html(additionAnswerWord);
+  }
+
   function generateSubtraction() {
     var S1 = Math.floor(Math.random()*maximumValue + 1);
     var S2 = Math.floor(Math.random()*S1 + 1);
@@ -33,6 +49,18 @@ $(function(){
     $("#S1").html(S1);
     $("#S2").html(S2);
     $("#answer_subtraction").html(subtractionAnswer);
+  }
+
+  function generateSubtractionWord() {
+    var SW1 = Math.floor(Math.random()*maximumValueWordProblem + 1);
+    var SW2 = Math.floor(Math.random()*SW1 + 1);
+    var subtractionAnswerWord = SW1 - SW2;
+
+    console.log("Subtraction Answer = " + subtractionAnswerWord + '\n' + "SW1 = " + SW1 + '\n' + "SW2 = " + SW2);
+
+    $("#SW1").html(SW1);
+    $("#SW2").html(SW2);
+    $("#answer_subtraction_word").html(subtractionAnswerWord);
   }
 
   function generateMixedOperation() {
@@ -59,6 +87,14 @@ $(function(){
 
   $("#generateMixedButton").click(function(){
     generateMixedOperation();
+  });
+
+  $("#generateAdditionWordButton").click(function(){
+    generateAdditionWord();
+  });
+
+  $("#generateSubtractionWordButton").click(function(){
+    generateSubtractionWord();
   });
 
 });
