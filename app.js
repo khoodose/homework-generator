@@ -13,7 +13,7 @@ $(function(){
   generateMixedOperation();
   generateAdditionWord();
   generateSubtractionWord();
-
+  generateMixedOperationWord();
 
   function generateAddition() {
     var additionAnswer = Math.floor(Math.random()*maximumValue + 1);
@@ -73,7 +73,18 @@ $(function(){
     $("#M2").html(M2);
     $("#M3").html(M3);
     $("#answer_mixed").html(mixedAnswer);
+  }
 
+  function generateMixedOperationWord() {
+    var MW1 = Math.floor(Math.random()*maximumValueWordProblem + 1);
+    var MW2 = Math.floor(Math.random()*(maximumValueWordProblem-MW1) + 1);
+    var MW3 = Math.floor(Math.random()*(MW1+MW2) + 1);
+    var mixedAnswerWord = MW1 + MW2 - MW3;
+
+    $("#MW1").html(MW1);
+    $("#MW2").html(MW2);
+    $("#MW3").html(MW3);
+    $("#answer_mixed_word").html(mixedAnswerWord);
   }
 
   // Event handling
@@ -95,6 +106,10 @@ $(function(){
 
   $("#generateSubtractionWordButton").click(function(){
     generateSubtractionWord();
+  });
+
+  $("#generateMixedWordButton").click(function(){
+    generateMixedOperationWord();
   });
 
 });
